@@ -1,7 +1,7 @@
 -- Merging decision tree log ---
 application
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:8:5-39:19
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:8:5-39:19
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 MERGED from [com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:19:5-29:19
 MERGED from [com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:19:5-29:19
 MERGED from [com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:11:5-36:19
@@ -29,17 +29,17 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\rmlam\.gradle\cach
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 	android:name
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:1:1-51:12
-MERGED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:1:1-51:12
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:1:1-51:12
+MERGED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 MERGED from [:mapbox_maps_flutter] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\mapbox_maps_flutter-2.8.0\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [com.mapbox.maps:android:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e4210043630ecf59d15abfc9762231fb\transformed\jetified-android-11.12.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.mapbox.plugin:maps-viewport:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\20ed6c6f8a4cba3a2e95ee3b7febb3ec\transformed\jetified-maps-viewport-11.12.0\AndroidManifest.xml:2:1-7:12
@@ -106,25 +106,25 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\rmlam\.
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\9e1412f82216e9a99f9f845f4567c1f2\transformed\jetified-relinker-1.4.5\AndroidManifest.xml:2:1-7:12
 MERGED from [org.chromium.net:cronet-api:119.6045.31] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\30c391b62ad59cab583618d2e9383682\transformed\jetified-cronet-api-119.6045.31\AndroidManifest.xml:15:2-22:13
 	package
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:1:11-69
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
 	android:name
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:3:5-80
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:3:5-80
 	android:name
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:3:22-78
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:3:22-78
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
-MERGED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
-MERGED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
+MERGED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
+MERGED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
 MERGED from [com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:15:5-67
 MERGED from [com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:15:5-67
 MERGED from [com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:8:5-67
@@ -132,29 +132,29 @@ MERGED from [com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.1
 MERGED from [org.chromium.net:cronet-api:119.6045.31] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\30c391b62ad59cab583618d2e9383682\transformed\jetified-cronet-api-119.6045.31\AndroidManifest.xml:19:6-67
 MERGED from [org.chromium.net:cronet-api:119.6045.31] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\30c391b62ad59cab583618d2e9383682\transformed\jetified-cronet-api-119.6045.31\AndroidManifest.xml:19:6-67
 	android:name
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:4:22-64
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:22-64
 meta-data#com.mapbox.accessToken
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:7:5-97
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:5-159
 	android:value
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:7:54-94
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:54-156
 	android:name
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:7:16-53
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:16-53
 queries
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:45:5-50:15
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:45:5-50:15
 intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:46:9-49:18
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:46:9-49:18
 action#android.intent.action.PROCESS_TEXT
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:47:13-72
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:47:13-72
 	android:name
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:47:21-70
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:47:21-70
 data
-ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:48:13-50
+ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:48:13-50
 	android:mimeType
-		ADDED from C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:48:19-48
+		ADDED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:48:19-48
 uses-sdk
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
-INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 MERGED from [:mapbox_maps_flutter] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\mapbox_maps_flutter-2.8.0\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [:mapbox_maps_flutter] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\mapbox_maps_flutter-2.8.0\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [com.mapbox.maps:android:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e4210043630ecf59d15abfc9762231fb\transformed\jetified-android-11.12.0\AndroidManifest.xml:5:5-44
@@ -286,9 +286,9 @@ MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\rmlam\.gradle\cac
 MERGED from [org.chromium.net:cronet-api:119.6045.31] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\30c391b62ad59cab583618d2e9383682\transformed\jetified-cronet-api-119.6045.31\AndroidManifest.xml:18:6-75
 MERGED from [org.chromium.net:cronet-api:119.6045.31] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\30c391b62ad59cab583618d2e9383682\transformed\jetified-cronet-api-119.6045.31\AndroidManifest.xml:18:6-75
 	android:targetSdkVersion
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\rmlam\Documents\sharapp\android\app\src\debug\AndroidManifest.xml
+		INJECTED from C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\debug\AndroidManifest.xml
 uses-feature#0x00030000
 ADDED from [com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:8:5-10:35
 	android:glEsVersion

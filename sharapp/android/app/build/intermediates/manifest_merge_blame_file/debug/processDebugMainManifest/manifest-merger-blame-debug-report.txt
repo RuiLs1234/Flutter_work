@@ -13,20 +13,20 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
-15-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:4:22-64
+15-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
+15-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:22-64
 16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
-16-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
+16-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
+16-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
 17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Add inside <application> tag -->
-17-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:3:5-80
-17-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:3:22-78
+17-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:3:5-80
+17-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:3:22-78
 18    <meta-data
-18-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:7:5-97
+18-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:5-159
 19        android:name="com.mapbox.accessToken"
-19-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:7:16-53
-20        android:value="YOUR_MAPBOX_ACCESS_TOKEN" />
-20-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:7:54-94
+19-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:16-53
+20        android:value="sk.eyJ1IjoicnVpdWEiLCJhIjoiY200bXM4czU5MDBwZDJrcjJsZW9qNzVjOCJ9.TlDHWxGJe7rdI03udVud3w" />
+20-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:54-156
 21    <!--
 22 Required to query activities that can process text, see:
 23         https://developer.android.com/training/package-visibility and
@@ -35,16 +35,16 @@
 26         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
 27    -->
 28    <queries>
-28-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:45:5-50:15
+28-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:45:5-50:15
 29        <intent>
-29-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:46:9-49:18
+29-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:46:9-49:18
 30            <action android:name="android.intent.action.PROCESS_TEXT" />
-30-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:47:13-72
-30-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:47:21-70
+30-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:47:13-72
+30-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:47:21-70
 31
 32            <data android:mimeType="text/plain" />
-32-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:48:13-50
-32-->C:\Users\rmlam\Documents\sharapp\android\app\src\main\AndroidManifest.xml:48:19-48
+32-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:48:13-50
+32-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:48:19-48
 33        </intent>
 34    </queries>
 35

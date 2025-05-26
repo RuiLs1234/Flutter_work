@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- Add inside <application> tag -->
-    <meta-data android:name="com.mapbox.accessToken" android:value="YOUR_MAPBOX_ACCESS_TOKEN" />
+    <meta-data android:name="com.mapbox.accessToken" android:value="sk.eyJ1IjoicnVpdWEiLCJhIjoiY200bXM4czU5MDBwZDJrcjJsZW9qNzVjOCJ9.TlDHWxGJe7rdI03udVud3w" />
     <application
         android:label="sharapp"
         android:name="${applicationName}"

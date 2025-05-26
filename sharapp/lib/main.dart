@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() => runApp(const Sharapp());
+  // Coloca o teu token Mapbox AQUI
+  MapboxOptions.setAccessToken("sk.eyJ1IjoicnVpdWEiLCJhIjoiY200bXM4czU5MDBwZDJrcjJsZW9qNzVjOCJ9.TlDHWxGJe7rdI03udVud3w");
 
-class Sharapp extends StatelessWidget {
-  const Sharapp({super.key});
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sharapp GPS',
+      title: 'Mapa Teste',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MapScreen(),
     );
@@ -27,42 +33,23 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   MapboxMap? mapboxMap;
 
-  @override
-  void initState() {
-    super.initState();
-    _requestLocationPermission();
-  }
-
-  void _requestLocationPermission() async {
-    // Handle permissions here
-  }
-
-  // Single onMapCreated definition
-  void _onMapCreated(MapboxMap mapboxMap) {
-    this.mapboxMap = mapboxMap;
-    mapboxMap.location.updateSettings(
-      LocationComponentSettings(
-        enabled: true,
-        puckBearing: PuckBearing.HEADING,
-        showAccuracyRing: true,
-      ),
-    );
+  void _onMapCreated(MapboxMap controller) {
+    mapboxMap = controller;
+    print('Mapa criado com sucesso!');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sharapp Map')),
+      appBar: AppBar(title: const Text("Mapa")),
       body: MapWidget(
         key: const ValueKey("mapWidget"),
-        onMapCreated: _onMapCreated,  // Fixed reference
         styleUri: MapboxStyles.MAPBOX_STREETS,
         cameraOptions: CameraOptions(
-          center: Point(
-            coordinates: Position(-77.0339, 38.9072),
-          ),  // Direct Point instance
-          zoom: 14.0,
+          center: Point(coordinates: Position(-9.1393, 38.7223)), // Lisboa
+          zoom: 12.0,
         ),
+        onMapCreated: _onMapCreated,
       ),
     );
   }

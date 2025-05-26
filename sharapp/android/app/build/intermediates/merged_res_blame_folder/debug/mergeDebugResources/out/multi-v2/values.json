@@ -146,25 +146,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\rmlam\\Documents\\sharapp\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,832",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "483,998"
-                    },
-                    "to": {
-                        "startLines": "1521,1525",
-                        "startColumns": "4,4",
-                        "startOffsets": "98156,98337",
-                        "endLines": "1524,1527",
-                        "endColumns": "12,12",
-                        "endOffsets": "98332,98501"
-                    }
-                },
-                {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\b3d51a44ab6b56289d4858158a1ad6dd\\transformed\\jetified-savedstate-1.2.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -217,6 +198,25 @@
                         "endLines": "84,85,86,87,88,89,90,91,392,393,394,395,396,397,398,399,401,402,403,404,405,406,407,408,409,2851,3086",
                         "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78,20,20",
                         "endOffsets": "3917,3997,4087,4177,4257,4338,4418,4498,23972,24153,24278,24385,24565,24688,24804,24907,25262,25367,25548,25673,25848,25996,26059,26121,26200,161972,169330"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\rmlam\\Documents\\Com_M\\sharapp\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,832",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "483,998"
+                    },
+                    "to": {
+                        "startLines": "1521,1525",
+                        "startColumns": "4,4",
+                        "startOffsets": "98156,98337",
+                        "endLines": "1524,1527",
+                        "endColumns": "12,12",
+                        "endOffsets": "98332,98501"
                     }
                 },
                 {
