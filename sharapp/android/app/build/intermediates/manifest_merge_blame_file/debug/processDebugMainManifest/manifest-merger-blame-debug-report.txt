@@ -13,245 +13,319 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
-15-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:4:22-64
+15-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:4:5-66
+15-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:4:22-64
 16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
-16-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
-17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Add inside <application> tag -->
-17-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:3:5-80
-17-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:3:22-78
-18    <meta-data
-18-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:5-159
-19        android:name="com.mapbox.accessToken"
-19-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:16-53
-20        android:value="sk.eyJ1IjoicnVpdWEiLCJhIjoiY200bXM4czU5MDBwZDJrcjJsZW9qNzVjOCJ9.TlDHWxGJe7rdI03udVud3w" />
-20-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:7:54-156
-21    <!--
-22 Required to query activities that can process text, see:
-23         https://developer.android.com/training/package-visibility and
-24         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
-25
-26         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
-27    -->
-28    <queries>
-28-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:45:5-50:15
-29        <intent>
-29-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:46:9-49:18
-30            <action android:name="android.intent.action.PROCESS_TEXT" />
-30-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:47:13-72
-30-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:47:21-70
-31
-32            <data android:mimeType="text/plain" />
-32-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:48:13-50
-32-->C:\Users\rmlam\Documents\Com_M\sharapp\android\app\src\main\AndroidManifest.xml:48:19-48
-33        </intent>
-34    </queries>
-35
-36    <uses-feature
-36-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:8:5-10:35
-37        android:glEsVersion="0x00030000"
-37-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:9:9-41
-38        android:required="true" />
-38-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:10:9-32
-39    <uses-feature
-39-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:11:5-13:36
-40        android:name="android.hardware.wifi"
-40-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:12:9-45
-41        android:required="false" />
-41-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:13:9-33
-42
-43    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-43-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:16:5-79
-43-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:16:22-76
-44    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-44-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:17:5-76
-44-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:17:22-73
-45
-46    <permission
-46-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-47        android:name="com.example.sharapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-47-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-48        android:protectionLevel="signature" />
-48-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-49
-50    <uses-permission android:name="com.example.sharapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-50-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-50-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+16-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
+16-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
+17    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+17-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:2:5-78
+17-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:2:22-76
+18    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+18-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:3:5-80
+18-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:3:22-78
+19    <uses-permission android:name="android.permission.CAMERA" />
+19-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:5:5-65
+19-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:5:22-62
+20    <uses-permission android:name="android.permission.CAMERA" />
+20-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:5:5-65
+20-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:5:22-62
+21
+22    <uses-feature android:name="android.hardware.camera" />
+22-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:6:5-60
+22-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:6:19-57
+23    <uses-feature android:name="android.hardware.camera" />
+23-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:6:5-60
+23-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:6:19-57
+24
+25    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+25-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:8:5-81
+25-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:8:22-78
+26    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Add inside <application> tag -->
+26-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:9:5-80
+26-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:9:22-77
+27    <meta-data
+27-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:14:5-159
+28        android:name="com.mapbox.accessToken"
+28-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:14:16-53
+29        android:value="sk.eyJ1IjoicnVpdWEiLCJhIjoiY200bXM4czU5MDBwZDJrcjJsZW9qNzVjOCJ9.TlDHWxGJe7rdI03udVud3w" />
+29-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:14:54-156
+30    <!--
+31 Required to query activities that can process text, see:
+32         https://developer.android.com/training/package-visibility and
+33         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+34
+35         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+36    -->
+37    <queries>
+37-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:52:5-57:15
+38        <intent>
+38-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:53:9-56:18
+39            <action android:name="android.intent.action.PROCESS_TEXT" />
+39-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:54:13-72
+39-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:54:21-70
+40
+41            <data android:mimeType="text/plain" />
+41-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:55:13-50
+41-->C:\Users\rmlam\Documents\Com_M\teste\sharapp\android\app\src\main\AndroidManifest.xml:55:19-48
+42        </intent>
+43    </queries>
+44
+45    <uses-feature
+45-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:8:5-10:35
+46        android:glEsVersion="0x00030000"
+46-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:9:9-41
+47        android:required="true" />
+47-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:10:9-32
+48    <uses-feature
+48-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:11:5-13:36
+49        android:name="android.hardware.wifi"
+49-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:12:9-45
+50        android:required="false" />
+50-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:13:9-33
 51
-52    <application
-53        android:name="android.app.Application"
-54        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-54-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-55        android:debuggable="true"
-56        android:extractNativeLibs="false"
-57        android:icon="@mipmap/ic_launcher"
-58        android:label="sharapp"
-59        android:testOnly="true" >
-60        <activity
-61            android:name="com.example.sharapp.MainActivity"
-62            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-63            android:exported="true"
-64            android:hardwareAccelerated="true"
-65            android:launchMode="singleTop"
-66            android:taskAffinity=""
-67            android:theme="@style/LaunchTheme"
-68            android:windowSoftInputMode="adjustResize" >
-69
-70            <!--
-71                 Specifies an Android theme to apply to this Activity as soon as
-72                 the Android process has started. This theme is visible to the user
-73                 while the Flutter UI initializes. After that, this theme continues
-74                 to determine the Window background behind the Flutter UI.
-75            -->
-76            <meta-data
-77                android:name="io.flutter.embedding.android.NormalTheme"
-78                android:resource="@style/NormalTheme" />
-79
-80            <intent-filter>
-81                <action android:name="android.intent.action.MAIN" />
-82
-83                <category android:name="android.intent.category.LAUNCHER" />
-84            </intent-filter>
-85        </activity>
-86        <!--
-87             Don't delete the meta-data below.
-88             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-89        -->
-90        <meta-data
-91            android:name="flutterEmbedding"
-92            android:value="2" />
-93
-94        <provider
-94-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:20:9-28:20
-95            android:name="androidx.startup.InitializationProvider"
-95-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:21:13-67
-96            android:authorities="com.example.sharapp.androidx-startup"
-96-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:22:13-68
-97            android:exported="false" >
-97-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:23:13-37
-98            <meta-data
-98-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:25:13-27:52
-99                android:name="com.mapbox.maps.loader.MapboxMapsInitializer"
-99-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:26:17-76
-100                android:value="androidx.startup" />
-100-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:27:17-49
-101            <!-- This entry makes MapboxSDKCommonInitializer discoverable. -->
-102            <meta-data
-102-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:19:13-21:52
-103                android:name="com.mapbox.common.MapboxSDKCommonInitializer"
-103-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:20:17-76
-104                android:value="androidx.startup" />
-104-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:21:17-49
-105            <meta-data
-105-->[androidx.emoji2:emoji2:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-106                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-106-->[androidx.emoji2:emoji2:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
-107                android:value="androidx.startup" />
-107-->[androidx.emoji2:emoji2:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
-108            <meta-data
-108-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
-109                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-109-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
-110                android:value="androidx.startup" />
-110-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
-111            <meta-data
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-112                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-113                android:value="androidx.startup" />
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-114        </provider>
-115
-116        <receiver
-116-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:24:9-31:20
-117            android:name="com.mapbox.common.location.LocationUpdatesReceiver"
-117-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:25:13-78
-118            android:enabled="true"
-118-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:26:13-35
-119            android:exported="false" >
-119-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:27:13-37
-120            <intent-filter>
-120-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:28:13-30:29
-121                <action android:name="com.mapbox.common.location.LocationUpdatesReceiver.ACTION_PROCESS_LOCATION_UPDATES" />
-121-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:29:17-125
-121-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:29:25-122
-122            </intent-filter>
-123        </receiver>
-124
-125        <service
-125-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:33:9-35:40
-126            android:name="com.mapbox.common.LifecycleService"
-126-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:34:13-62
-127            android:exported="false" />
-127-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:35:13-37
-128
-129        <activity
-129-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
-130            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-130-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
-131            android:exported="false"
-131-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
-132            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-132-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
-133
-134        <meta-data
-134-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
-135            android:name="com.google.android.gms.version"
-135-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
-136            android:value="@integer/google_play_services_version" />
-136-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
-137
-138        <uses-library
-138-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
-139            android:name="androidx.window.extensions"
-139-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
-140            android:required="false" />
-140-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
-141        <uses-library
-141-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
-142            android:name="androidx.window.sidecar"
-142-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
-143            android:required="false" />
-143-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
-144
-145        <receiver
-145-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-146            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-147            android:directBootAware="false"
-147-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-148            android:enabled="true"
-148-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-149            android:exported="true"
-149-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-150            android:permission="android.permission.DUMP" >
-150-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-151            <intent-filter>
-151-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-152                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-152-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-152-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-153            </intent-filter>
-154            <intent-filter>
-154-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-155                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-155-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-155-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-156            </intent-filter>
+52    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+52-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:16:5-79
+52-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:16:22-76
+53    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+53-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:17:5-76
+53-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:17:22-73
+54
+55    <permission
+55-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+56        android:name="com.example.sharapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+56-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+57        android:protectionLevel="signature" />
+57-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+58
+59    <uses-permission android:name="com.example.sharapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+59-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+59-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+60
+61    <application
+62        android:name="android.app.Application"
+63        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+63-->[androidx.core:core:1.13.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+64        android:debuggable="true"
+65        android:extractNativeLibs="false"
+66        android:icon="@mipmap/ic_launcher"
+67        android:label="sharapp"
+68        android:testOnly="true" >
+69        <activity
+70            android:name="com.example.sharapp.MainActivity"
+71            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+72            android:exported="true"
+73            android:hardwareAccelerated="true"
+74            android:launchMode="singleTop"
+75            android:taskAffinity=""
+76            android:theme="@style/LaunchTheme"
+77            android:windowSoftInputMode="adjustResize" >
+78
+79            <!--
+80                 Specifies an Android theme to apply to this Activity as soon as
+81                 the Android process has started. This theme is visible to the user
+82                 while the Flutter UI initializes. After that, this theme continues
+83                 to determine the Window background behind the Flutter UI.
+84            -->
+85            <meta-data
+86                android:name="io.flutter.embedding.android.NormalTheme"
+87                android:resource="@style/NormalTheme" />
+88
+89            <intent-filter>
+90                <action android:name="android.intent.action.MAIN" />
+91
+92                <category android:name="android.intent.category.LAUNCHER" />
+93            </intent-filter>
+94        </activity>
+95        <!--
+96             Don't delete the meta-data below.
+97             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+98        -->
+99        <meta-data
+100            android:name="flutterEmbedding"
+101            android:value="2" />
+102
+103        <service
+103-->[:geolocator_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.2\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:9-12:56
+104            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+104-->[:geolocator_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.2\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-77
+105            android:enabled="true"
+105-->[:geolocator_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.2\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-35
+106            android:exported="false"
+106-->[:geolocator_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.2\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-37
+107            android:foregroundServiceType="location" />
+107-->[:geolocator_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.2\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-53
+108
+109        <provider
+109-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:9-17:20
+110            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+110-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-82
+111            android:authorities="com.example.sharapp.flutter.image_provider"
+111-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-74
+112            android:exported="false"
+112-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-37
+113            android:grantUriPermissions="true" >
+113-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:13-47
+114            <meta-data
+114-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:14:13-16:75
+115                android:name="android.support.FILE_PROVIDER_PATHS"
+115-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:15:17-67
+116                android:resource="@xml/flutter_image_picker_file_paths" />
+116-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:16:17-72
+117        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
+118        <service
+118-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:19:9-31:19
+119            android:name="com.google.android.gms.metadata.ModuleDependencies"
+119-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:20:13-78
+120            android:enabled="false"
+120-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:21:13-36
+121            android:exported="false" >
+121-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:22:13-37
+122            <intent-filter>
+122-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:24:13-26:29
+123                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+123-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:17-94
+123-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:25-91
+124            </intent-filter>
+125
+126            <meta-data
+126-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:28:13-30:36
+127                android:name="photopicker_activity:0:required"
+127-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:17-63
+128                android:value="" />
+128-->[:image_picker_android] C:\Users\rmlam\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+23\android\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:17-33
+129        </service>
+130
+131        <provider
+131-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:20:9-28:20
+132            android:name="androidx.startup.InitializationProvider"
+132-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:21:13-67
+133            android:authorities="com.example.sharapp.androidx-startup"
+133-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:22:13-68
+134            android:exported="false" >
+134-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:23:13-37
+135            <meta-data
+135-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:25:13-27:52
+136                android:name="com.mapbox.maps.loader.MapboxMapsInitializer"
+136-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:26:17-76
+137                android:value="androidx.startup" />
+137-->[com.mapbox.maps:android-core:11.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\856351afe047cbddc2ea269beffe9e68\transformed\jetified-android-core-11.12.0\AndroidManifest.xml:27:17-49
+138            <!-- This entry makes MapboxSDKCommonInitializer discoverable. -->
+139            <meta-data
+139-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:19:13-21:52
+140                android:name="com.mapbox.common.MapboxSDKCommonInitializer"
+140-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:20:17-76
+141                android:value="androidx.startup" />
+141-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:21:17-49
+142            <meta-data
+142-->[androidx.emoji2:emoji2:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+143                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+143-->[androidx.emoji2:emoji2:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+144                android:value="androidx.startup" />
+144-->[androidx.emoji2:emoji2:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+145            <meta-data
+145-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+146                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+146-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+147                android:value="androidx.startup" />
+147-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+148            <meta-data
+148-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+149                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+149-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+150                android:value="androidx.startup" />
+150-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+151        </provider>
+152
+153        <receiver
+153-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:24:9-31:20
+154            android:name="com.mapbox.common.location.LocationUpdatesReceiver"
+154-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:25:13-78
+155            android:enabled="true"
+155-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:26:13-35
+156            android:exported="false" >
+156-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:27:13-37
 157            <intent-filter>
-157-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-158                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-158-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-158-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+157-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:28:13-30:29
+158                <action android:name="com.mapbox.common.location.LocationUpdatesReceiver.ACTION_PROCESS_LOCATION_UPDATES" />
+158-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:29:17-125
+158-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:29:25-122
 159            </intent-filter>
-160            <intent-filter>
-160-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-161                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-161-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-161-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-162            </intent-filter>
-163        </receiver>
-164    </application>
+160        </receiver>
+161
+162        <service
+162-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:33:9-35:40
+163            android:name="com.mapbox.common.LifecycleService"
+163-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:34:13-62
+164            android:exported="false" />
+164-->[com.mapbox.common:common:24.12.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\676a41f5de7a830c8ab286e62bd17b78\transformed\jetified-common-24.12.0\AndroidManifest.xml:35:13-37
 165
-166</manifest>
+166        <activity
+166-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+167            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+167-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+168            android:exported="false"
+168-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+169            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+169-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\f6fa56a75284f8e0ea5d27971291f441\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+170
+171        <meta-data
+171-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+172            android:name="com.google.android.gms.version"
+172-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+173            android:value="@integer/google_play_services_version" />
+173-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+174
+175        <uses-library
+175-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+176            android:name="androidx.window.extensions"
+176-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+177            android:required="false" />
+177-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+178        <uses-library
+178-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+179            android:name="androidx.window.sidecar"
+179-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+180            android:required="false" />
+180-->[androidx.window:window:1.2.0] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+181
+182        <receiver
+182-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+183            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+183-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+184            android:directBootAware="false"
+184-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+185            android:enabled="true"
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+186            android:exported="true"
+186-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+187            android:permission="android.permission.DUMP" >
+187-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+188            <intent-filter>
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+189                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+189-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+189-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+190            </intent-filter>
+191            <intent-filter>
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+192                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+192-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+192-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+193            </intent-filter>
+194            <intent-filter>
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+195                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+195-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+195-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+196            </intent-filter>
+197            <intent-filter>
+197-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+198                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+198-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+198-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rmlam\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+199            </intent-filter>
+200        </receiver>
+201    </application>
+202
+203</manifest>

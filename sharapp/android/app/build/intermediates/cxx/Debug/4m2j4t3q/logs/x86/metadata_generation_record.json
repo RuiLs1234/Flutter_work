@@ -14,7 +14,7 @@
   },
   {
     "level_": 0,
-    "message_": "JSON \u0027C:\\Users\\rmlam\\Documents\\Com_M\\sharapp\\android\\app\\.cxx\\Debug\\4m2j4t3q\\x86\\android_gradle_build.json\u0027 was up-to-date",
+    "message_": "JSON \u0027C:\\Users\\rmlam\\Documents\\Com_M\\teste\\sharapp\\android\\app\\.cxx\\Debug\\4m2j4t3q\\x86\\android_gradle_build.json\u0027 was up-to-date",
     "file_": "C:\\Users\\rmlam\\dev\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
     "tag_": "debug|x86",
     "diagnosticCode_": 0,

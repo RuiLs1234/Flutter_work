@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sharapp-mergeDebugResources-43:/values/values.xml",
+            "outputFile": "com.example.sharapp-mergeDebugResources-45:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\8cf478dec41eed746328fa8046755ba2\\transformed\\core-1.13.1\\res\\values\\values.xml",
@@ -20,6 +20,23 @@
                         "endLines": "28,68,69,82,83,119,120,223,224,225,226,227,228,229,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,320,321,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,355,385,386,387,388,389,390,391,432,1799,1803,1804,1808,1809,1953,1954,2616,2654,2733,2754,2796,2802",
                         "endColumns": "59,71,87,64,65,68,62,69,67,71,69,60,73,72,60,60,61,63,61,60,67,99,59,65,72,68,56,51,61,71,75,64,58,58,59,59,59,59,59,59,59,59,59,59,58,59,59,59,59,59,59,59,59,59,59,58,59,59,58,58,58,58,58,58,34,34,54,62,54,57,57,60,62,56,50,49,60,56,65,33,34,34,69,66,71,68,68,73,71,87,70,116,12,109,12,128,71,66,24,24,24,24,24,24",
                         "endOffsets": "979,2648,2736,3761,3827,6185,6248,13222,13290,13362,13432,13493,13567,13640,15491,15552,15614,15678,15740,15801,15869,15969,16029,16095,16168,16237,16294,16346,16408,16933,17009,17074,17133,17192,17252,17312,17372,17432,17492,17552,17612,17672,17732,17792,17851,17911,17971,18031,18091,18151,18211,18271,18331,18391,18451,18510,18570,18630,18689,18748,18807,18866,18925,18984,19416,19451,19792,19855,19910,19968,20026,20087,20150,20207,20258,20308,20369,20426,20492,20526,20561,20596,21280,23423,23495,23564,23633,23707,23779,23867,28711,119504,119705,119815,120016,120145,131512,131579,153264,154935,158595,159276,160277,160444"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\a70ddd560199940b45ffc1a1c4db7f79\\transformed\\jetified-activity-1.9.3\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,97",
+                        "endColumns": "41,59",
+                        "endOffsets": "92,152"
+                    },
+                    "to": {
+                        "startLines": "325,346",
+                        "startColumns": "4,4",
+                        "startOffsets": "19589,20676",
+                        "endColumns": "41,59",
+                        "endOffsets": "19626,20731"
                     }
                 },
                 {
@@ -201,25 +218,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\rmlam\\Documents\\Com_M\\sharapp\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,832",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "483,998"
-                    },
-                    "to": {
-                        "startLines": "1521,1525",
-                        "startColumns": "4,4",
-                        "startOffsets": "98156,98337",
-                        "endLines": "1524,1527",
-                        "endColumns": "12,12",
-                        "endOffsets": "98332,98501"
-                    }
-                },
-                {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\5568a35fadd1ad6d1c703f16a16e5540\\transformed\\jetified-play-services-basement-18.4.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "4,7",
@@ -254,23 +252,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\13dd610fda78ecd8ad3daad9b8195d7e\\transformed\\jetified-activity-1.8.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,97",
-                        "endColumns": "41,59",
-                        "endOffsets": "92,152"
-                    },
-                    "to": {
-                        "startLines": "325,346",
-                        "startColumns": "4,4",
-                        "startOffsets": "19589,20676",
-                        "endColumns": "41,59",
-                        "endOffsets": "19626,20731"
-                    }
-                },
-                {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\e4210043630ecf59d15abfc9762231fb\\transformed\\jetified-android-11.12.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12",
@@ -285,6 +266,25 @@
                         "startOffsets": "5184,5230,5276,5327,5388,19254,19456,27786,27858,27930,28106",
                         "endColumns": "45,45,50,60,60,40,36,71,71,71,69",
                         "endOffsets": "5225,5271,5322,5383,5444,19290,19488,27853,27925,27997,28171"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\rmlam\\Documents\\Com_M\\teste\\sharapp\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,832",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "483,998"
+                    },
+                    "to": {
+                        "startLines": "1521,1525",
+                        "startColumns": "4,4",
+                        "startOffsets": "98156,98337",
+                        "endLines": "1524,1527",
+                        "endColumns": "12,12",
+                        "endOffsets": "98332,98501"
                     }
                 },
                 {

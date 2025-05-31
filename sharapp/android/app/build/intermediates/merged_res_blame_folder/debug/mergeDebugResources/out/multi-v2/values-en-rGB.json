@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sharapp-mergeDebugResources-43:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "com.example.sharapp-mergeDebugResources-45:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\f6fa56a75284f8e0ea5d27971291f441\\transformed\\jetified-play-services-base-18.5.0\\res\\values-en-rGB\\values.xml",

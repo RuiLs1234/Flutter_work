@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sharapp-mergeDebugResources-43:/values-ca/values-ca.xml",
+            "outputFile": "com.example.sharapp-mergeDebugResources-45:/values-ca/values-ca.xml",
             "map": [
                 {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\583a450980fc680ebb6438bd0ef0d3ee\\transformed\\jetified-maps-logo-11.12.0\\res\\values-ca\\values-ca.xml",

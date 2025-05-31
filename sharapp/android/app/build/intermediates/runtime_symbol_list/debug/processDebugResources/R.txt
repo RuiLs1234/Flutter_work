@@ -2263,3 +2263,4 @@ int styleable mapbox_MapView_mapbox_scaleBarTextColor 130
 int styleable mapbox_MapView_mapbox_scaleBarTextSize 131
 int styleable mapbox_MapView_mapbox_scaleBarUseContinuousRendering 132
 int styleable mapbox_MapView_mapbox_styleUri 133
+int xml flutter_image_picker_file_paths 0x7f110000

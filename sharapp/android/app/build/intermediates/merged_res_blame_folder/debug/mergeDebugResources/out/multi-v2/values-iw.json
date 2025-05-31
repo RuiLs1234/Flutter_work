@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sharapp-mergeDebugResources-43:/values-iw/values-iw.xml",
+            "outputFile": "com.example.sharapp-mergeDebugResources-45:/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "C:\\Users\\rmlam\\.gradle\\caches\\8.10.2\\transforms\\e4210043630ecf59d15abfc9762231fb\\transformed\\jetified-android-11.12.0\\res\\values-iw\\values-iw.xml",

@@ -130,6 +130,7 @@ com.example.sharapp:string/mapbox_warning_logo_disabled = 0x7f0e004a
 com.example.sharapp:style/TextAppearance.AppCompat.Widget.ActionMode.Title = 0x7f0f00e2
 com.example.sharapp:style/RtlOverlay.Widget.AppCompat.Search.DropDown.Query = 0x7f0f00b9
 com.example.sharapp:style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon2 = 0x7f0f00b8
+com.example.sharapp:xml/flutter_image_picker_file_paths = 0x7f110000
 com.example.sharapp:style/Theme.AppCompat.DayNight.NoActionBar = 0x7f0f00fe
 com.example.sharapp:style/Base.Widget.AppCompat.DrawerArrowToggle = 0x7f0f007d
 com.example.sharapp:style/RtlOverlay.Widget.AppCompat.Search.DropDown.Icon1 = 0x7f0f00b7
