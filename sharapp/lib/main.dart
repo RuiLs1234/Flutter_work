@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart' as geo;
 import 'package:image_picker/image_picker.dart' as img_picker;
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await geo.Geolocator.requestPermission();
 
   MapboxOptions.setAccessToken(
@@ -33,98 +34,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class PhotoRecord {
-  int? id;
-  final String imagePath;
-  final String message;
-  final double latitude;
-  final double longitude;
-  final DateTime timestamp;
-
-  PhotoRecord({
-    this.id,
-    required this.imagePath,
-    required this.message,
-    required this.latitude,
-    required this.longitude,
-    required this.timestamp,
-  });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'imagePath': imagePath,
-      'message': message,
-      'latitude': latitude,
-      'longitude': longitude,
-      'timestamp': timestamp.toIso8601String(),
-    };
-  }
-
-  factory PhotoRecord.fromMap(Map<String, dynamic> map) {
-    return PhotoRecord(
-      id: map['id'],
-      imagePath: map['imagePath'],
-      message: map['message'],
-      latitude: map['latitude'],
-      longitude: map['longitude'],
-      timestamp: DateTime.parse(map['timestamp']),
-    );
-  }
-}
-
-class DatabaseHelper {
-  static const _databaseName = 'photos.db';
-  static const _databaseVersion = 1;
-  static const table = 'photos';
-
-  static const createTable = '''
-    CREATE TABLE $table (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      imagePath TEXT NOT NULL,
-      message TEXT NOT NULL,
-      latitude REAL NOT NULL,
-      longitude REAL NOT NULL,
-      timestamp TEXT NOT NULL
-    )
-  ''';
-
-  DatabaseHelper._privateConstructor();
-  static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
-
-  static Database? _database;
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  Future<Database> _initDatabase() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String dbPath = path.join(documentsDirectory.path, _databaseName);
-    return await openDatabase(
-      dbPath,
-      version: _databaseVersion,
-      onCreate: _onCreate,
-    );
-  }
-
-  Future<void> _onCreate(Database db, int version) async {
-    await db.execute(createTable);
-  }
-
-  Future<int> insertPhoto(PhotoRecord photo) async {
-    Database db = await instance.database;
-    return await db.insert(table, photo.toMap());
-  }
-
-  Future<List<PhotoRecord>> getAllPhotos() async {
-    Database db = await instance.database;
-    List<Map<String, dynamic>> maps = await db.query(table);
-    return List.generate(maps.length, (i) => PhotoRecord.fromMap(maps[i]));
-  }
-}
-
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
@@ -139,11 +48,9 @@ class _MapScreenState extends State<MapScreen> {
   bool _locationInitialized = false;
   bool _hasInitialPosition = false;
   final img_picker.ImagePicker _picker = img_picker.ImagePicker();
-  final DatabaseHelper _dbHelper = DatabaseHelper.instance;
 
-  // FIX 1: Remove const from Position since it doesn't have a const constructor
   static final Position defaultPosition = Position(-9.1393, 38.7223);
-  Position _cameraPosition = Position(-9.1393, 38.7223); // Initialize with default
+  Position _cameraPosition = Position(-9.1393, 38.7223);
   double _cameraZoom = 12.0;
 
   @override
@@ -156,7 +63,6 @@ class _MapScreenState extends State<MapScreen> {
   Future<void> _getInitialPosition() async {
     try {
       geo.Position? lastPosition = await geo.Geolocator.getLastKnownPosition();
-
       if (lastPosition != null) {
         _updateCameraPosition(lastPosition);
         return;
@@ -177,7 +83,6 @@ class _MapScreenState extends State<MapScreen> {
 
   void _updateCameraPosition(geo.Position position) {
     setState(() {
-      // FIX 2: Create new Position instance
       _cameraPosition = Position(position.longitude, position.latitude);
       _cameraZoom = 15.0;
       _hasInitialPosition = true;
@@ -329,21 +234,18 @@ class _MapScreenState extends State<MapScreen> {
       final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
       final filename = 'photo_$timestamp.jpg';
       final File imageFile = File('${photosDir.path}/$filename');
-
       await imageFile.writeAsBytes(await photo.readAsBytes());
 
-      final record = PhotoRecord(
-        imagePath: imageFile.path,
-        message: message,
-        latitude: _currentPosition!.latitude,
-        longitude: _currentPosition!.longitude,
-        timestamp: DateTime.now(),
-      );
-
-      await _dbHelper.insertPhoto(record);
+      await FirebaseFirestore.instance.collection('photos').add({
+        'imagePath': imageFile.path, // path local (ou URL se usar Imgur/Firebase Storage)
+        'message': message,
+        'latitude': _currentPosition!.latitude,
+        'longitude': _currentPosition!.longitude,
+        'timestamp': DateTime.now().toIso8601String(),
+      });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Foto salva com sucesso!')),
+        const SnackBar(content: Text('Foto salva com sucesso no Firestore!')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -359,7 +261,6 @@ class _MapScreenState extends State<MapScreen> {
       body: Stack(
         children: [
           if (_hasInitialPosition)
-          // FIX 3: Remove const from MapWidget
             MapWidget(
               key: const ValueKey("mapWidget"),
               styleUri: MapboxStyles.MAPBOX_STREETS,
