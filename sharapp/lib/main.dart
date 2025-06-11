@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
-import 'dart:typed_data';
+//import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart' as geo;
@@ -52,9 +52,10 @@ class _MapScreenState extends State<MapScreen> {
   bool _hasInitialPosition = false;
   final img_picker.ImagePicker _picker = img_picker.ImagePicker();
 
-  static final Position defaultPosition = Position(-9.1393, 38.7223);
+  // static final Position defaultPosition = Position(-9.1393, 38.7223);
   Position _cameraPosition = Position(-9.1393, 38.7223);
   double _cameraZoom = 12.0;
+
 
   @override
   void initState() {
@@ -122,27 +123,27 @@ class _MapScreenState extends State<MapScreen> {
     _initializeLocationComponent();
   }
 
-  Future<void> _initializeLocationComponent() async {
-    if (mapboxMap == null) return;
+Future<void> _initializeLocationComponent() async {
+  if (mapboxMap == null) return;
 
-    try {
-      await mapboxMap?.location.updateSettings(
-        LocationComponentSettings(
-          enabled: true,
-          pulsingEnabled: true,
-          pulsingColor: Colors.blue.value,
-          showAccuracyRing: true,
-          puckBearing: PuckBearing.HEADING,
-          puckBearingEnabled: true,
-        ),
-      );
+  try {
+    await mapboxMap?.location.updateSettings(
+      LocationComponentSettings(
+        enabled: true,
+        pulsingEnabled: true,
+        pulsingColor: 0xFF2196F3,
+        showAccuracyRing: true,
+        puckBearing: PuckBearing.HEADING,
+        puckBearingEnabled: true,
+      ),
+    );
 
-      _startLocationUpdates();
-      setState(() => _locationInitialized = true);
-    } catch (e) {
-      print("Error initializing location component: $e");
-    }
+    _startLocationUpdates();
+    setState(() => _locationInitialized = true);
+  } catch (e) {
+    debugPrint("Error initializing location component: $e");
   }
+}
 
   void _startLocationUpdates() {
     _updateLocation();
@@ -227,6 +228,8 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _savePhotoRecord(img_picker.XFile photo, String message) async {
+  if (!mounted) return; // Verificar se widget ainda está montado
+  
   try {
     // Mostrar indicador de loading
     showDialog(
@@ -252,54 +255,56 @@ class _MapScreenState extends State<MapScreen> {
     // Upload para Imgur
     final String imageUrl = await _uploadImageToImgur(imageFile);
 
-    // 3. Salvar metadata no Firestore
+    // Salvar metadata no Firestore
     await FirebaseFirestore.instance.collection('photos').add({
-      'imageUrl': imageUrl,              //  URL do Imgur
-      'imagePath': imageFile.path,       // Path local para cache
+      'imageUrl': imageUrl,
+      'imagePath': imageFile.path,
       'message': message,
       'latitude': _currentPosition!.latitude,
       'longitude': _currentPosition!.longitude,
       'timestamp': FieldValue.serverTimestamp(),
       'fileSize': await imageFile.length(),
       'filename': filename,
-      'uploadService': 'imgur',          //  Identificar fonte
+      'uploadService': 'imgur',
     });
 
-    // Fechar loading
-    Navigator.pop(context);
+    // Fechar loading - verificar se ainda montado
+    if (mounted && Navigator.canPop(context)) {
+      Navigator.pop(context);
+    }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Foto salva com sucesso no Imgur!'),
-        backgroundColor: Colors.green,
-      ),
-    );
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Foto salva com sucesso no Imgur!'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
   } catch (e) {
     // Fechar loading se ainda estiver aberto
-    if (Navigator.canPop(context)) {
+    if (mounted && Navigator.canPop(context)) {
       Navigator.pop(context);
     }
     
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Erro ao salvar foto: $e'),
-        backgroundColor: Colors.red,
-      ),
-    );
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Erro ao salvar foto: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 }
 
-// Novo método para upload no Imgur
 Future<String> _uploadImageToImgur(File imageFile) async {
   try {
-    // Client ID do Imgur (público para apps anónimas)
     const String clientId = '89528b049eb7c05';
     
-    // Converter imagem para base64
     final bytes = await imageFile.readAsBytes();
     final base64Image = base64Encode(bytes);
     
-    // Request para Imgur API
     final response = await http.post(
       Uri.parse('https://api.imgur.com/3/image'),
       headers: {
@@ -318,14 +323,14 @@ Future<String> _uploadImageToImgur(File imageFile) async {
       final jsonResponse = jsonDecode(response.body);
       final imageUrl = jsonResponse['data']['link'];
       
-      print('Upload Imgur concluído: $imageUrl');
+      debugPrint('Upload Imgur concluído: $imageUrl');
       return imageUrl;
     } else {
       throw Exception('Imgur upload failed: ${response.statusCode}');
     }
     
   } catch (e) {
-    print('Erro no upload Imgur: $e');
+    debugPrint('Erro no upload Imgur: $e');
     throw Exception('Falha no upload da imagem para Imgur: $e');
   }
 }
