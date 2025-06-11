@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:http/http.dart' as http;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -235,7 +235,7 @@ class _MapScreenState extends State<MapScreen> {
       ),
     );
 
-    // 1. Criar arquivo local para cache
+    // Criar arquivo local para cache
     final directory = await getApplicationDocumentsDirectory();
     final photosDir = Directory('${directory.path}/photos');
     if (!photosDir.existsSync()) {
@@ -247,19 +247,20 @@ class _MapScreenState extends State<MapScreen> {
     final File imageFile = File('${photosDir.path}/$filename');
     await imageFile.writeAsBytes(await photo.readAsBytes());
 
-    // 2. Upload para Firebase Storage
-    final String imageUrl = await _uploadImageToStorage(imageFile, filename);
+    // Upload para Imgur
+    final String imageUrl = await _uploadImageToImgur(imageFile);
 
     // 3. Salvar metadata no Firestore
     await FirebaseFirestore.instance.collection('photos').add({
-      'imageUrl': imageUrl,              // ✅ URL pública da imagem
+      'imageUrl': imageUrl,              //  URL do Imgur
       'imagePath': imageFile.path,       // Path local para cache
       'message': message,
       'latitude': _currentPosition!.latitude,
       'longitude': _currentPosition!.longitude,
-      'timestamp': FieldValue.serverTimestamp(), // ✅ Timestamp do servidor
-      'fileSize': await imageFile.length(), // Tamanho do arquivo
-      'filename': filename,              // Nome do arquivo
+      'timestamp': FieldValue.serverTimestamp(),
+      'fileSize': await imageFile.length(),
+      'filename': filename,
+      'uploadService': 'imgur',          //  Identificar fonte
     });
 
     // Fechar loading
@@ -267,7 +268,7 @@ class _MapScreenState extends State<MapScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Foto salva com sucesso no Firebase!'),
+        content: Text('Foto salva com sucesso no Imgur!'),
         backgroundColor: Colors.green,
       ),
     );
@@ -286,36 +287,44 @@ class _MapScreenState extends State<MapScreen> {
   }
 }
 
-// 4. Novo método para upload no Firebase Storage
-Future<String> _uploadImageToStorage(File imageFile, String filename) async {
+// Novo método para upload no Imgur
+Future<String> _uploadImageToImgur(File imageFile) async {
   try {
-    // Referência no Firebase Storage
-    final storageRef = FirebaseStorage.instance
-        .ref()
-        .child('photos')
-        .child(filename);
-
-    // Metadata da imagem
-    final metadata = SettableMetadata(
-      contentType: 'image/jpeg',
-      customMetadata: {
-        'uploaded_by': 'sharapp_user',
-        'upload_date': DateTime.now().toIso8601String(),
+    // Client ID do Imgur (público para apps anónimas)
+    const String clientId = '89528b049eb7c05';
+    
+    // Converter imagem para base64
+    final bytes = await imageFile.readAsBytes();
+    final base64Image = base64Encode(bytes);
+    
+    // Request para Imgur API
+    final response = await http.post(
+      Uri.parse('https://api.imgur.com/3/image'),
+      headers: {
+        'Authorization': 'Client-ID $clientId',
+        'Content-Type': 'application/json',
       },
+      body: jsonEncode({
+        'image': base64Image,
+        'type': 'base64',
+        'title': 'Sharapp Photo',
+        'description': 'Uploaded from Sharapp',
+      }),
     );
 
-    // Upload do arquivo
-    final uploadTask = await storageRef.putFile(imageFile, metadata);
-    
-    // Obter URL de download
-    final String downloadUrl = await uploadTask.ref.getDownloadURL();
-    
-    print('Upload concluído: $downloadUrl');
-    return downloadUrl;
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      final imageUrl = jsonResponse['data']['link'];
+      
+      print('Upload Imgur concluído: $imageUrl');
+      return imageUrl;
+    } else {
+      throw Exception('Imgur upload failed: ${response.statusCode}');
+    }
     
   } catch (e) {
-    print('Erro no upload: $e');
-    throw Exception('Falha no upload da imagem: $e');
+    print('Erro no upload Imgur: $e');
+    throw Exception('Falha no upload da imagem para Imgur: $e');
   }
 }
 
