@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
-//import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart' as geo;
@@ -55,10 +54,12 @@ class _MapScreenState extends State<MapScreen> {
   bool _hasInitialPosition = false;
   final img_picker.ImagePicker _picker = img_picker.ImagePicker();
 
-  // static final Position defaultPosition = Position(-9.1393, 38.7223);
   Position _cameraPosition = Position(-9.1393, 38.7223);
   double _cameraZoom = 12.0;
-
+  
+  // Novas variáveis para fotos
+  List<Map<String, dynamic>> _savedPhotos = [];
+  bool _showingSavedPhotos = false;
 
   @override
   void initState() {
@@ -68,25 +69,25 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _getInitialPosition() async {
-  try {
-    geo.Position? lastPosition = await geo.Geolocator.getLastKnownPosition();
-    if (lastPosition != null) {
-      _updateCameraPosition(lastPosition);
-      return;
+    try {
+      geo.Position? lastPosition = await geo.Geolocator.getLastKnownPosition();
+      if (lastPosition != null) {
+        _updateCameraPosition(lastPosition);
+        return;
+      }
+
+      final position = await geo.Geolocator.getCurrentPosition(
+        desiredAccuracy: geo.LocationAccuracy.medium,
+      ).timeout(const Duration(seconds: 5));
+
+      _updateCameraPosition(position);
+    } catch (e) {
+      debugPrint("Initial position error: $e");
+      setState(() {
+        _hasInitialPosition = true;
+      });
     }
-
-    final position = await geo.Geolocator.getCurrentPosition(
-      desiredAccuracy: geo.LocationAccuracy.medium,
-    ).timeout(const Duration(seconds: 5));
-
-    _updateCameraPosition(position);
-  } catch (e) {
-    debugPrint("Initial position error: $e");
-    setState(() {
-      _hasInitialPosition = true;
-    });
   }
-}
 
   void _updateCameraPosition(geo.Position position) {
     setState(() {
@@ -171,7 +172,7 @@ class _MapScreenState extends State<MapScreen> {
 
   Future<void> _takePhoto() async {
     if (_currentPosition == null) {
-      if (mounted) { //  Adicionar verificação mounted
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Aguardando localização...')),
         );
@@ -184,11 +185,11 @@ class _MapScreenState extends State<MapScreen> {
         source: img_picker.ImageSource.camera,
       );
 
-      if (photo != null && mounted) { //  Verificar mounted após operação async
+      if (photo != null && mounted) {
         _showMessageDialog(photo);
       }
     } catch (e) {
-      if (mounted) { //  Verificar mounted
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro na câmera: $e')),
         );
@@ -217,10 +218,9 @@ class _MapScreenState extends State<MapScreen> {
           ),
           ElevatedButton(
             onPressed: () async {
-              final message = messageController.text.trim(); //  Armazenar valor localmente
+              final message = messageController.text.trim();
               
               if (message.isEmpty) {
-                // Verificar se ainda montado antes de usar context
                 if (mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Digite uma mensagem')),
@@ -229,7 +229,7 @@ class _MapScreenState extends State<MapScreen> {
                 return;
               }
 
-              if (mounted) { // Verificar se ainda montado
+              if (mounted) {
                 Navigator.pop(context);
                 await _savePhotoRecord(photo, message);
               }
@@ -242,10 +242,9 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _savePhotoRecord(img_picker.XFile photo, String message) async {
-    if (!mounted) return; // Verificar se widget ainda está montado
+    if (!mounted) return;
     
     try {
-      // Mostrar indicador de loading
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -254,7 +253,6 @@ class _MapScreenState extends State<MapScreen> {
         ),
       );
 
-      // Criar arquivo local para cache
       final directory = await getApplicationDocumentsDirectory();
       final photosDir = Directory('${directory.path}/photos');
       if (!photosDir.existsSync()) {
@@ -266,10 +264,8 @@ class _MapScreenState extends State<MapScreen> {
       final File imageFile = File('${photosDir.path}/$filename');
       await imageFile.writeAsBytes(await photo.readAsBytes());
 
-      // Upload para Imgur
       final String imageUrl = await _uploadImageToImgur(imageFile);
 
-      // Salvar metadata no Firestore
       await FirebaseFirestore.instance.collection('photos').add({
         'imageUrl': imageUrl,
         'imagePath': imageFile.path,
@@ -282,7 +278,6 @@ class _MapScreenState extends State<MapScreen> {
         'uploadService': 'imgur',
       });
 
-      // Fechar loading - verificar se ainda montado
       if (mounted && Navigator.canPop(context)) {
         Navigator.pop(context);
       }
@@ -296,7 +291,6 @@ class _MapScreenState extends State<MapScreen> {
         );
       }
     } catch (e) {
-      // Fechar loading se ainda estiver aberto
       if (mounted && Navigator.canPop(context)) {
         Navigator.pop(context);
       }
@@ -349,10 +343,247 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
+  // métodos para carregar e exibir fotos guardadas
+  Future<void> _loadSavedPhotos() async {
+    try {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()),
+      );
+
+      final QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('photos')
+          .orderBy('timestamp', descending: true)
+          .limit(100)
+          .get();
+
+      final List<Map<String, dynamic>> photos = snapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        data['id'] = doc.id;
+        return data;
+      }).toList();
+
+      setState(() {
+        _savedPhotos = photos;
+        _showingSavedPhotos = true;
+      });
+
+      if (mounted && Navigator.canPop(context)) {
+        Navigator.pop(context);
+      }
+
+      await _addPhotoMarkersToMap();
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${photos.length} fotos carregadas!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted && Navigator.canPop(context)) {
+        Navigator.pop(context);
+      }
+      
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao carregar fotos: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _addPhotoMarkersToMap() async {
+    if (mapboxMap == null || _savedPhotos.isEmpty) return;
+
+    try {
+      for (int i = 0; i < _savedPhotos.length; i++) {
+        final photo = _savedPhotos[i];
+        final latitude = photo['latitude']?.toDouble();
+        final longitude = photo['longitude']?.toDouble();
+
+        if (latitude != null && longitude != null) {
+          await mapboxMap?.annotations.createPointAnnotationManager().then((manager) async {
+            await manager.create(
+              PointAnnotationOptions(
+                geometry: Point(coordinates: Position(longitude, latitude)),
+                textField: '📷 ${i + 1}',
+                textSize: 12.0,
+                textColor: 0xFF1976D2,
+                iconSize: 1.5,
+              ),
+            );
+          });
+        }
+      }
+      debugPrint('${_savedPhotos.length} marcadores adicionados ao mapa');
+    } catch (e) {
+      debugPrint('Erro ao adicionar marcadores: $e');
+    }
+  }
+
+  void _clearSavedPhotos() {
+    setState(() {
+      _savedPhotos.clear();
+      _showingSavedPhotos = false;
+    });
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Fotos removidas do mapa')),
+    );
+  }
+
+  void _showPhotoDetails(Map<String, dynamic> photo) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Foto - ${photo['filename'] ?? 'Sem nome'}'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (photo['imageUrl'] != null)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  photo['imageUrl'],
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 200,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.error, size: 50),
+                    );
+                  },
+                ),
+              ),
+            const SizedBox(height: 16),
+            Text('📝 Mensagem: ${photo['message'] ?? 'Sem mensagem'}'),
+            const SizedBox(height: 8),
+            Text('📍 Localização: ${photo['latitude']?.toStringAsFixed(6)}, ${photo['longitude']?.toStringAsFixed(6)}'),
+            const SizedBox(height: 8),
+            if (photo['timestamp'] != null)
+              Text('📅 Data: ${_formatTimestamp(photo['timestamp'])}'),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Fechar'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _flyToPhotoLocation(photo);
+            },
+            child: const Text('Ir para Local'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatTimestamp(dynamic timestamp) {
+    try {
+      if (timestamp is Timestamp) {
+        final date = timestamp.toDate();
+        return DateFormat('dd/MM/yyyy HH:mm').format(date);
+      }
+      return 'Data não disponível';
+    } catch (e) {
+      return 'Data não disponível';
+    }
+  }
+
+  void _flyToPhotoLocation(Map<String, dynamic> photo) {
+    final latitude = photo['latitude']?.toDouble();
+    final longitude = photo['longitude']?.toDouble();
+
+    if (latitude != null && longitude != null && mapboxMap != null) {
+      mapboxMap?.flyTo(
+        CameraOptions(
+          center: Point(coordinates: Position(longitude, latitude)),
+          zoom: 18.0,
+        ),
+        MapAnimationOptions(duration: 2000),
+      );
+    }
+  }
+
+  void _showPhotosList() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.6,
+        maxChildSize: 0.9,
+        minChildSize: 0.3,
+        builder: (context, scrollController) => Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+          ),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  '📷 Fotos Guardadas (${_savedPhotos.length})',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  controller: scrollController,
+                  itemCount: _savedPhotos.length,
+                  itemBuilder: (context, index) {
+                    final photo = _savedPhotos[index];
+                    return ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: photo['imageUrl'] != null
+                            ? NetworkImage(photo['imageUrl'])
+                            : null,
+                        child: photo['imageUrl'] == null ? const Icon(Icons.photo) : null,
+                      ),
+                      title: Text(photo['message'] ?? 'Sem mensagem'),
+                      subtitle: Text(_formatTimestamp(photo['timestamp'])),
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _showPhotoDetails(photo);
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Mapa")),
+      appBar: AppBar(
+        title: const Text("Mapa"),
+        actions: [
+          IconButton(
+            onPressed: _showingSavedPhotos ? _clearSavedPhotos : _loadSavedPhotos,
+            icon: Icon(_showingSavedPhotos ? Icons.clear : Icons.photo_library),
+            tooltip: _showingSavedPhotos ? 'Limpar Fotos' : 'Carregar Fotos',
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           if (_hasInitialPosition)
@@ -370,11 +601,36 @@ class _MapScreenState extends State<MapScreen> {
 
           if (_hasInitialPosition && !_locationInitialized)
             const Center(child: CircularProgressIndicator()),
+
+          if (_showingSavedPhotos && _savedPhotos.isNotEmpty)
+            Positioned(
+              top: 16,
+              left: 16,
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.black87,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  '📷 ${_savedPhotos.length} fotos no mapa',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
         ],
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          if (_showingSavedPhotos && _savedPhotos.isNotEmpty)
+            FloatingActionButton(
+              onPressed: _showPhotosList,
+              heroTag: "photosList",
+              backgroundColor: Colors.purple,
+              child: const Icon(Icons.list),
+            ),
+          const SizedBox(height: 16),
           FloatingActionButton(
             onPressed: () {
               if (_currentPosition != null) {
@@ -392,11 +648,13 @@ class _MapScreenState extends State<MapScreen> {
                 );
               }
             },
+            heroTag: "myLocation",
             child: const Icon(Icons.my_location),
           ),
           const SizedBox(height: 16),
           FloatingActionButton(
             onPressed: _takePhoto,
+            heroTag: "camera",
             backgroundColor: Colors.amber,
             child: const Icon(Icons.camera_alt),
           ),
