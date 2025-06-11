@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -224,35 +225,99 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _savePhotoRecord(img_picker.XFile photo, String message) async {
-    try {
-      final directory = await getApplicationDocumentsDirectory();
-      final photosDir = Directory('${directory.path}/photos');
-      if (!photosDir.existsSync()) {
-        photosDir.createSync(recursive: true);
-      }
+  try {
+    // Mostrar indicador de loading
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
 
-      final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
-      final filename = 'photo_$timestamp.jpg';
-      final File imageFile = File('${photosDir.path}/$filename');
-      await imageFile.writeAsBytes(await photo.readAsBytes());
-
-      await FirebaseFirestore.instance.collection('photos').add({
-        'imagePath': imageFile.path, // path local (ou URL se usar Imgur/Firebase Storage)
-        'message': message,
-        'latitude': _currentPosition!.latitude,
-        'longitude': _currentPosition!.longitude,
-        'timestamp': DateTime.now().toIso8601String(),
-      });
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Foto salva com sucesso no Firestore!')),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Erro ao salvar foto: $e')),
-      );
+    // 1. Criar arquivo local para cache
+    final directory = await getApplicationDocumentsDirectory();
+    final photosDir = Directory('${directory.path}/photos');
+    if (!photosDir.existsSync()) {
+      photosDir.createSync(recursive: true);
     }
+
+    final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+    final filename = 'photo_$timestamp.jpg';
+    final File imageFile = File('${photosDir.path}/$filename');
+    await imageFile.writeAsBytes(await photo.readAsBytes());
+
+    // 2. Upload para Firebase Storage
+    final String imageUrl = await _uploadImageToStorage(imageFile, filename);
+
+    // 3. Salvar metadata no Firestore
+    await FirebaseFirestore.instance.collection('photos').add({
+      'imageUrl': imageUrl,              // ✅ URL pública da imagem
+      'imagePath': imageFile.path,       // Path local para cache
+      'message': message,
+      'latitude': _currentPosition!.latitude,
+      'longitude': _currentPosition!.longitude,
+      'timestamp': FieldValue.serverTimestamp(), // ✅ Timestamp do servidor
+      'fileSize': await imageFile.length(), // Tamanho do arquivo
+      'filename': filename,              // Nome do arquivo
+    });
+
+    // Fechar loading
+    Navigator.pop(context);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Foto salva com sucesso no Firebase!'),
+        backgroundColor: Colors.green,
+      ),
+    );
+  } catch (e) {
+    // Fechar loading se ainda estiver aberto
+    if (Navigator.canPop(context)) {
+      Navigator.pop(context);
+    }
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Erro ao salvar foto: $e'),
+        backgroundColor: Colors.red,
+      ),
+    );
   }
+}
+
+// 4. Novo método para upload no Firebase Storage
+Future<String> _uploadImageToStorage(File imageFile, String filename) async {
+  try {
+    // Referência no Firebase Storage
+    final storageRef = FirebaseStorage.instance
+        .ref()
+        .child('photos')
+        .child(filename);
+
+    // Metadata da imagem
+    final metadata = SettableMetadata(
+      contentType: 'image/jpeg',
+      customMetadata: {
+        'uploaded_by': 'sharapp_user',
+        'upload_date': DateTime.now().toIso8601String(),
+      },
+    );
+
+    // Upload do arquivo
+    final uploadTask = await storageRef.putFile(imageFile, metadata);
+    
+    // Obter URL de download
+    final String downloadUrl = await uploadTask.ref.getDownloadURL();
+    
+    print('Upload concluído: $downloadUrl');
+    return downloadUrl;
+    
+  } catch (e) {
+    print('Erro no upload: $e');
+    throw Exception('Falha no upload da imagem: $e');
+  }
+}
 
   @override
   Widget build(BuildContext context) {
