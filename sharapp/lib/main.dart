@@ -65,25 +65,25 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _getInitialPosition() async {
-    try {
-      geo.Position? lastPosition = await geo.Geolocator.getLastKnownPosition();
-      if (lastPosition != null) {
-        _updateCameraPosition(lastPosition);
-        return;
-      }
-
-      final position = await geo.Geolocator.getCurrentPosition(
-        desiredAccuracy: geo.LocationAccuracy.medium,
-      ).timeout(const Duration(seconds: 5));
-
-      _updateCameraPosition(position);
-    } catch (e) {
-      print("Initial position error: $e");
-      setState(() {
-        _hasInitialPosition = true;
-      });
+  try {
+    geo.Position? lastPosition = await geo.Geolocator.getLastKnownPosition();
+    if (lastPosition != null) {
+      _updateCameraPosition(lastPosition);
+      return;
     }
+
+    final position = await geo.Geolocator.getCurrentPosition(
+      desiredAccuracy: geo.LocationAccuracy.medium,
+    ).timeout(const Duration(seconds: 5));
+
+    _updateCameraPosition(position);
+  } catch (e) {
+    debugPrint("Initial position error: $e");
+    setState(() {
+      _hasInitialPosition = true;
+    });
   }
+}
 
   void _updateCameraPosition(geo.Position position) {
     setState(() {
@@ -103,7 +103,7 @@ class _MapScreenState extends State<MapScreen> {
   Future<void> _checkLocationPermission() async {
     final serviceEnabled = await geo.Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      print("Location services disabled.");
+      debugPrint("Location services disabled.");
       return;
     }
 
@@ -113,7 +113,7 @@ class _MapScreenState extends State<MapScreen> {
     }
 
     if (permission == geo.LocationPermission.deniedForever) {
-      print("Location permissions permanently denied.");
+      debugPrint("Location permissions permanently denied.");
     }
   }
 
@@ -123,27 +123,27 @@ class _MapScreenState extends State<MapScreen> {
     _initializeLocationComponent();
   }
 
-Future<void> _initializeLocationComponent() async {
-  if (mapboxMap == null) return;
+  Future<void> _initializeLocationComponent() async {
+    if (mapboxMap == null) return;
 
-  try {
-    await mapboxMap?.location.updateSettings(
-      LocationComponentSettings(
-        enabled: true,
-        pulsingEnabled: true,
-        pulsingColor: 0xFF2196F3,
-        showAccuracyRing: true,
-        puckBearing: PuckBearing.HEADING,
-        puckBearingEnabled: true,
-      ),
-    );
+    try {
+      await mapboxMap?.location.updateSettings(
+        LocationComponentSettings(
+          enabled: true,
+          pulsingEnabled: true,
+          pulsingColor: 0xFF2196F3,
+          showAccuracyRing: true,
+          puckBearing: PuckBearing.HEADING,
+          puckBearingEnabled: true,
+        ),
+      );
 
-    _startLocationUpdates();
-    setState(() => _locationInitialized = true);
-  } catch (e) {
-    debugPrint("Error initializing location component: $e");
+      _startLocationUpdates();
+      setState(() => _locationInitialized = true);
+    } catch (e) {
+      debugPrint("Error initializing location component: $e");
+    }
   }
-}
 
   void _startLocationUpdates() {
     _updateLocation();
@@ -162,15 +162,17 @@ Future<void> _initializeLocationComponent() async {
         _currentPosition = position;
       });
     } catch (e) {
-      print("Location update error: $e");
+      debugPrint("Location update error: $e");
     }
   }
 
   Future<void> _takePhoto() async {
     if (_currentPosition == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Aguardando localização...')),
-      );
+      if (mounted) { //  Adicionar verificação mounted
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Aguardando localização...')),
+        );
+      }
       return;
     }
 
@@ -179,13 +181,15 @@ Future<void> _initializeLocationComponent() async {
         source: img_picker.ImageSource.camera,
       );
 
-      if (photo != null) {
+      if (photo != null && mounted) { //  Verificar mounted após operação async
         _showMessageDialog(photo);
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Erro na câmera: $e')),
-      );
+      if (mounted) { //  Verificar mounted
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro na câmera: $e')),
+        );
+      }
     }
   }
 
@@ -210,15 +214,22 @@ Future<void> _initializeLocationComponent() async {
           ),
           ElevatedButton(
             onPressed: () async {
-              if (messageController.text.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Digite uma mensagem')),
-                );
+              final message = messageController.text.trim(); //  Armazenar valor localmente
+              
+              if (message.isEmpty) {
+                // Verificar se ainda montado antes de usar context
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Digite uma mensagem')),
+                  );
+                }
                 return;
               }
 
-              Navigator.pop(context);
-              await _savePhotoRecord(photo, messageController.text);
+              if (mounted) { // Verificar se ainda montado
+                Navigator.pop(context);
+                await _savePhotoRecord(photo, message);
+              }
             },
             child: const Text('Salvar'),
           ),
@@ -228,112 +239,112 @@ Future<void> _initializeLocationComponent() async {
   }
 
   Future<void> _savePhotoRecord(img_picker.XFile photo, String message) async {
-  if (!mounted) return; // Verificar se widget ainda está montado
-  
-  try {
-    // Mostrar indicador de loading
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-
-    // Criar arquivo local para cache
-    final directory = await getApplicationDocumentsDirectory();
-    final photosDir = Directory('${directory.path}/photos');
-    if (!photosDir.existsSync()) {
-      photosDir.createSync(recursive: true);
-    }
-
-    final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
-    final filename = 'photo_$timestamp.jpg';
-    final File imageFile = File('${photosDir.path}/$filename');
-    await imageFile.writeAsBytes(await photo.readAsBytes());
-
-    // Upload para Imgur
-    final String imageUrl = await _uploadImageToImgur(imageFile);
-
-    // Salvar metadata no Firestore
-    await FirebaseFirestore.instance.collection('photos').add({
-      'imageUrl': imageUrl,
-      'imagePath': imageFile.path,
-      'message': message,
-      'latitude': _currentPosition!.latitude,
-      'longitude': _currentPosition!.longitude,
-      'timestamp': FieldValue.serverTimestamp(),
-      'fileSize': await imageFile.length(),
-      'filename': filename,
-      'uploadService': 'imgur',
-    });
-
-    // Fechar loading - verificar se ainda montado
-    if (mounted && Navigator.canPop(context)) {
-      Navigator.pop(context);
-    }
-
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Foto salva com sucesso no Imgur!'),
-          backgroundColor: Colors.green,
+    if (!mounted) return; // Verificar se widget ainda está montado
+    
+    try {
+      // Mostrar indicador de loading
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(
+          child: CircularProgressIndicator(),
         ),
       );
-    }
-  } catch (e) {
-    // Fechar loading se ainda estiver aberto
-    if (mounted && Navigator.canPop(context)) {
-      Navigator.pop(context);
-    }
-    
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Erro ao salvar foto: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
-}
 
-Future<String> _uploadImageToImgur(File imageFile) async {
-  try {
-    const String clientId = '89528b049eb7c05';
-    
-    final bytes = await imageFile.readAsBytes();
-    final base64Image = base64Encode(bytes);
-    
-    final response = await http.post(
-      Uri.parse('https://api.imgur.com/3/image'),
-      headers: {
-        'Authorization': 'Client-ID $clientId',
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'image': base64Image,
-        'type': 'base64',
-        'title': 'Sharapp Photo',
-        'description': 'Uploaded from Sharapp',
-      }),
-    );
+      // Criar arquivo local para cache
+      final directory = await getApplicationDocumentsDirectory();
+      final photosDir = Directory('${directory.path}/photos');
+      if (!photosDir.existsSync()) {
+        photosDir.createSync(recursive: true);
+      }
 
-    if (response.statusCode == 200) {
-      final jsonResponse = jsonDecode(response.body);
-      final imageUrl = jsonResponse['data']['link'];
+      final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+      final filename = 'photo_$timestamp.jpg';
+      final File imageFile = File('${photosDir.path}/$filename');
+      await imageFile.writeAsBytes(await photo.readAsBytes());
+
+      // Upload para Imgur
+      final String imageUrl = await _uploadImageToImgur(imageFile);
+
+      // Salvar metadata no Firestore
+      await FirebaseFirestore.instance.collection('photos').add({
+        'imageUrl': imageUrl,
+        'imagePath': imageFile.path,
+        'message': message,
+        'latitude': _currentPosition!.latitude,
+        'longitude': _currentPosition!.longitude,
+        'timestamp': FieldValue.serverTimestamp(),
+        'fileSize': await imageFile.length(),
+        'filename': filename,
+        'uploadService': 'imgur',
+      });
+
+      // Fechar loading - verificar se ainda montado
+      if (mounted && Navigator.canPop(context)) {
+        Navigator.pop(context);
+      }
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Foto salva com sucesso no Imgur!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      // Fechar loading se ainda estiver aberto
+      if (mounted && Navigator.canPop(context)) {
+        Navigator.pop(context);
+      }
       
-      debugPrint('Upload Imgur concluído: $imageUrl');
-      return imageUrl;
-    } else {
-      throw Exception('Imgur upload failed: ${response.statusCode}');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao salvar foto: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
-    
-  } catch (e) {
-    debugPrint('Erro no upload Imgur: $e');
-    throw Exception('Falha no upload da imagem para Imgur: $e');
   }
-}
+
+  Future<String> _uploadImageToImgur(File imageFile) async {
+    try {
+      const String clientId = '89528b049eb7c05';
+      
+      final bytes = await imageFile.readAsBytes();
+      final base64Image = base64Encode(bytes);
+      
+      final response = await http.post(
+        Uri.parse('https://api.imgur.com/3/image'),
+        headers: {
+          'Authorization': 'Client-ID $clientId',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'image': base64Image,
+          'type': 'base64',
+          'title': 'Sharapp Photo',
+          'description': 'Uploaded from Sharapp',
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final jsonResponse = jsonDecode(response.body);
+        final imageUrl = jsonResponse['data']['link'];
+        
+        debugPrint('Upload Imgur concluído: $imageUrl');
+        return imageUrl;
+      } else {
+        throw Exception('Imgur upload failed: ${response.statusCode}');
+      }
+      
+    } catch (e) {
+      debugPrint('Erro no upload Imgur: $e');
+      throw Exception('Falha no upload da imagem para Imgur: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
